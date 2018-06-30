@@ -1,0 +1,46 @@
+.container{
+    width: 80%;
+    margin: auto;
+    height: 800px;
+    margin-top: 70px;
+    background-color : rgb(79, 81, 82);
+}
+
+.image img{
+    margin-top: 60px;
+    margin-left: 40%;
+    border: black solid 0.5px;
+    border-radius: 100px;
+}
+
+h2{
+    margin: 10px;
+    padding: 10px;
+    color: aquamarine;
+}
+
+#logout{
+    font-size: 30px;
+    margin-left: 80%;
+    color: aquamarine;
+}
+
+
+#logout:hover{
+        color: pink;
+        cursor: pointer;
+}
+
+h3{
+    text-align: center;
+    margin: 80px;
+    color: orangered;
+    text-transform:  uppercase;
+}
+
+h3 span{
+    color: greenyellow;
+    text-transform: none;
+    margin-left: 30px;
+}
+
