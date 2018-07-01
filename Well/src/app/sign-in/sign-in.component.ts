@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
     }
 
     else{
-      this.http.post('http://localhost:4202/loginCheck', { email : this.email, pass : this.pass })
+      this.http.post('http://localhost:4201/login/signin', { email : this.email, pass : this.pass })
       .subscribe(data =>{
           console.log('data---',data['status']);
           if(data['status'] == 200){
