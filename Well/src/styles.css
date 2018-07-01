@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.valid_error{
+    color: green;
+}
+
+.invalid_error{
+    color: red;
+}
+
+button:disabled{
+    color: red;
+}
