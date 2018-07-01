@@ -9,6 +9,11 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EmailValidatorDirective } from './directive/email-validator.directive';
+import { PhoneValidatorDirective } from './directive/phone-validator.directive';
+import { NameValidatorDirective } from './directive/name-validator.directive';
+import { PassValidatorDirective } from './directive/pass-validator.directive';
+import { InputValidationService } from './services/input-validation.service';
 
 
 @NgModule({
@@ -18,6 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
     SignInComponent,
     ProfileComponent,
     HomeComponent,
+    EmailValidatorDirective,
+    PhoneValidatorDirective,
+    NameValidatorDirective,
+    PassValidatorDirective,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [InputValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

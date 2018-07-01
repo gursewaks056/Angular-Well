@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { InputValidationService } from '../services/input-validation.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,33 +10,38 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
-  private name='';
-  private phone='';
-  private email='';
-  private pass='';
-  private rePass='';
+  private user = {
+    name : '',
+    phone : '',
+    email : '',
+    pass : '',
+    rePass : ''
+  };
 
+  private disableValue;
 
-
-  constructor(private http : HttpClient, private _router : Router) { 
+  constructor(private http : HttpClient, private _router : Router, private inputValidationService : InputValidationService ) { 
+    this.disableValue = this.inputValidationService.getInputValidValue(); 
   }
+
 
   ngOnInit() {
   }
 
+  
   userSignUp(){
     // console.log(this.name + this.phone + this.email + this.pass + this.rePass);
 
-    if( this.name == '' || this.phone == '' ||this.email == '' ||this.pass == '' ||this.rePass == ''){      
+    if( this.user.name == '' || this.user.phone == '' ||this.user.email == '' ||this.user.pass == '' ||this.user.rePass == ''){      
         alert('Fill the blanks'); 
     }
 
-    else if(this.pass != this.rePass){
+    else if(this.user.pass != this.user.rePass){
       alert("password should be matched");
     }
 
     else{
-        this.http.post('http://localhost:4201/login/signup',{ name: this.name, phone : this.phone, email : this.email, pass : this.pass })
+        this.http.post('http://localhost:4201/login/signup', this.user)
         .subscribe(data => {
           console.log(data);
         } , error => {
