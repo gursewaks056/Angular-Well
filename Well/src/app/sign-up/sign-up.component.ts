@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { InputValidationService } from '../services/input-validation.service';
+import {  InOutService } from '../services/in-out.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,7 +21,7 @@ export class SignUpComponent implements OnInit {
 
   private disableValue;
 
-  constructor(private http : HttpClient, private _router : Router, private inputValidationService : InputValidationService ) { 
+  constructor(private http : HttpClient, private _router : Router, private inputValidationService : InputValidationService, private inOutService : InOutService ) { 
     this.disableValue = this.inputValidationService.getInputValidValue(); 
   }
 
@@ -41,15 +42,9 @@ export class SignUpComponent implements OnInit {
     }
 
     else{
-        this.http.post('http://localhost:4201/login/signup', this.user)
-        .subscribe(data => {
-          console.log(data);
-        } , error => {
-
-        })
-        console.log("done1");
+        this.inOutService.registerUser('http://localhost:4201/login/signup', this.user);
         alert('Registration Successful!');
-        this._router.navigate(['signin']);
+        this._router.navigate(['signin']);  
     }
    
 
