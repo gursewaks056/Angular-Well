@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { InOutService } from '../services/in-out.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,12 +10,16 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
 
-  private email = '';
-  private pass = '';
+  private user = {
+      email : '',
+      pass : ''
+  };  
+  
+  private result;
 
 
 
-  constructor(private http : HttpClient, private _router : Router) { 
+  constructor(private http : HttpClient, private _router : Router, private inOutService: InOutService  ) { 
   }
 
   ngOnInit() {
@@ -23,12 +28,12 @@ export class SignInComponent implements OnInit {
   userSignIn(){
     // console.log(this.email + ' and ' + this.pass);
 
-    if(this.email == '' || this.pass == ''){
+    if(this.user.email == '' || this.user. pass == ''){
       alert('Fill all the blanks!');
     }
 
     else{
-      this.http.post('http://localhost:4201/login/signin', { email : this.email, pass : this.pass })
+     /* this.http.post('http://localhost:4201/login/signin', { email : this.email, pass : this.pass })
       .subscribe(data =>{
           console.log('data---',data['status']);
           if(data['status'] == 200){
@@ -41,8 +46,9 @@ export class SignInComponent implements OnInit {
       }, error => {
 
       })
-      console.log('Done2');
-
+      console.log('Done2');  */
+      this.result = this.inOutService.verifyUser('http://localhost:4201/login/signin', this.user);
+      console.log(this.result);
     }
 
   }

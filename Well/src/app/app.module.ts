@@ -14,6 +14,7 @@ import { PhoneValidatorDirective } from './directive/phone-validator.directive';
 import { NameValidatorDirective } from './directive/name-validator.directive';
 import { PassValidatorDirective } from './directive/pass-validator.directive';
 import { InputValidationService } from './services/input-validation.service';
+import { InOutService } from './services/in-out.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { InputValidationService } from './services/input-validation.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [InputValidationService],
+  providers: [InputValidationService, InOutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
