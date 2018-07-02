@@ -16,14 +16,21 @@ export class SignInComponent implements OnInit {
   };  
   
   private result;
-
+  private login_status; 
 
 
   constructor(private http : HttpClient, private _router : Router, private inOutService: InOutService  ) { 
+    //retreiving login status
+    this.login_status =  (localStorage.getItem('loginStatus')||'false');   
   }
 
   ngOnInit() {
-}
+  
+      if(this.login_status == 'true'){
+        this._router.navigate(['profile']);
+      }
+
+  }
 
   userSignIn(){
     // console.log(this.email + ' and ' + this.pass);
@@ -33,22 +40,22 @@ export class SignInComponent implements OnInit {
     }
 
     else{
-     /* this.http.post('http://localhost:4201/login/signin', { email : this.email, pass : this.pass })
-      .subscribe(data =>{
-          console.log('data---',data['status']);
-          if(data['status'] == 200){
-            alert('Login Successful!');
-            this._router.navigate(['profile']);
-          }
-          else{
-            alert('Login Failed');
-          }
-      }, error => {
-
+      this.inOutService.postRequest('http://localhost:4201/login/signin',this.user)
+      .subscribe(data => {
+        console.log('name -- ',data['name']);
+        if(data['status'] === 200){
+          alert('login successful!')
+          localStorage.setItem('loginStatus','true');
+          localStorage.setItem('name',data['name']);
+          localStorage.setItem('phone',data['phone']);
+          localStorage.setItem('email',data['email']);
+          this._router.navigate(['profile']);
+        }
+      } , error => {
+        console.log(error)
       })
-      console.log('Done2');  */
-      this.result = this.inOutService.verifyUser('http://localhost:4201/login/signin', this.user);
-      console.log(this.result);
+      
+      // console.log(this.result);
     }
 
   }

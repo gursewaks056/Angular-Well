@@ -11,31 +11,8 @@ export class InOutService {
 
   }
 
-  registerUser(url, params){
-      return this.http.post(url,params)
-      .subscribe(data => {
-        console.log(data);
-      } , error => {
-        console.log(error)
-      })
+  postRequest(url, data){
+    return this.http.post(url,data);
   }
-
-
-  verifyUser(url, params){
-    return this.http.post(url,params)
-    .subscribe(data => {
-          console.log(data);
-          if(data['status'] == 200){
-            alert('Login Successful!');
-            this._router.navigate(['profile']);
-          }
-          else{
-            alert('Login Failed');
-          }
-    } , error => {
-      console.log(error)
-    })
-  }
-
 
 }
