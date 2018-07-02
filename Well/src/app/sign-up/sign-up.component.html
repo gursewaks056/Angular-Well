@@ -6,30 +6,30 @@
   <div class="form-group">
     <label for="name">name</label>
     <input type="text" class="form-control" placeholder="Enter name" name="user.name" [(ngModel)]="user.name" (appNameValidator)="name_valid = $event">
-    <span appValidator class="valid_error" *ngIf="name_valid && user.name  != ''">valid</span>
-    <span appValidator class="invalid_error" *ngIf="!name_valid && user.name  != ''">Name Should Be At Least of 3 characters</span>
+    <span class="valid_error" *ngIf="name_valid && user.name  != ''">valid</span>
+    <span  class="invalid_error" *ngIf="!name_valid && user.name  != ''">Name Should Be At Least of 3 characters</span>
 </div>
   <div class="form-group">
       <label for="phone">Phone</label>
       <input type="number" class="form-control" placeholder="Enter phone" name="user.phone" [(ngModel)]="user.phone" (appPhoneValidator)="phone_valid = $event">
-      <span appValidator class="valid_error" *ngIf="phone_valid && user.phone  != ''">valid</span>
-      <span appValidator class="invalid_error" *ngIf="!phone_valid && user.phone  != ''">Phone Number Should Be of 10 Digits</span>
+      <span  class="valid_error" *ngIf="phone_valid && user.phone  != ''">valid</span>
+      <span  class="invalid_error" *ngIf="!phone_valid && user.phone  != ''">Phone Number Should Be of 10 Digits</span>
         </div>
     <div class="form-group">
         <label for="email">Email address</label>
         <input type="email" class="form-control" placeholder="Enter email" name="user.email" [(ngModel)]="user.email" (appEmailValidator)="email_valid = $event">
-        <span appValidator class="valid_error" *ngIf="email_valid && user.email  != ''">valid</span>
-        <span appValidator class="invalid_error" *ngIf="!email_valid && user.email  != ''">Email is Invalid</span>
+        <span class="valid_error" *ngIf="email_valid && user.email  != ''">valid</span>
+        <span class="invalid_error" *ngIf="!email_valid && user.email  != ''">Email is Invalid</span>
             </div>
         <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" placeholder="Password" name="user.pass" [(ngModel)]="user.pass" [appPassValidator]='user.rePass' (checkValidPass)="pass_valid=$event">
+    <input type="password" class="form-control" placeholder="Password" name="user.pass" [(ngModel)]="user.pass"  [passValidator] ="user.rePass"  (checkValidPass)="pass_valid=$event">
 </div>
   <div class="form-group">
       <label for="confirm-password">ReEnter-Password</label>
-      <input type="password" class="form-control" placeholder="Confirm-Password" name="user.rePass" [(ngModel)]="user.rePass" [appPassValidator]='user.pass' (checkValidPass)="pass_valid=$event">
-      <span appValidator class="valid_error" *ngIf="pass_valid && user.pass  != ''">Matched</span>
-      <span appValidator class="invalid_error" *ngIf="!pass_valid && user.pass  != ''">Password Do Not Match</span>
+      <input type="password" class="form-control" placeholder="Confirm-Password" name="user.rePass" [(ngModel)]="user.rePass"  [passValidator] ="user.pass" (checkValidPass)="pass_valid=$event">
+      <span class="valid_error" *ngIf="pass_valid && user.pass  != ''">Matched</span>
+      <span class="invalid_error" *ngIf="!pass_valid && user.pass  != ''">Password Do Not Match</span>
           </div>
     <button type="submit" class="btn btn-primary"  (click)="userSignUp()">Sign Up </button>
     <!-- <button type="submit" class="btn btn-primary">Sign Up</button> -->

@@ -42,9 +42,14 @@ export class SignUpComponent implements OnInit {
     }
 
     else{
-        this.inOutService.registerUser('http://localhost:4201/login/signup', this.user);
+        this.inOutService.postRequest('http://localhost:4201/login/signup',this.user)
+        .subscribe(data => {
+          console.log(data);
+        } , error => {
+          console.log(error)
+        })
         alert('Registration Successful!');
-        this._router.navigate(['signin']);  
+        this._router.navigate(['signin']);    
     }
    
 

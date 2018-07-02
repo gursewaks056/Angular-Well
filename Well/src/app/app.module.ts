@@ -9,10 +9,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EmailValidatorDirective } from './directive/email-validator.directive';
-import { PhoneValidatorDirective } from './directive/phone-validator.directive';
-import { NameValidatorDirective } from './directive/name-validator.directive';
-import { PassValidatorDirective } from './directive/pass-validator.directive';
+import { EmailValidatorDirective, PassValidatorDirective, NameValidatorDirective, PhoneValidatorDirective } from './directive/main-validator.directive';
 import { InputValidationService } from './services/input-validation.service';
 import { InOutService } from './services/in-out.service';
 
@@ -25,9 +22,9 @@ import { InOutService } from './services/in-out.service';
     ProfileComponent,
     HomeComponent,
     EmailValidatorDirective,
-    PhoneValidatorDirective,
-    NameValidatorDirective,
     PassValidatorDirective,
+    NameValidatorDirective,
+    PhoneValidatorDirective
   ],
   imports: [
     BrowserModule,

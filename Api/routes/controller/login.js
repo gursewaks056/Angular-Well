@@ -29,7 +29,8 @@ exports.signin = function(req,response){              // login check
         }
         else{
             console.log('Match found');
-            response.send({status: 200, message:'success'});                
+            console.log('result --- ',result[0]['name']);
+            response.send({status: 200, message:'success', name : result[0]['name'], phone : result[0]['phone'], email : result[0]['email'] });                
         }
 
         console.log('hello-signin');
